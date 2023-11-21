@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { signOut } from "next-auth/react";
+import { Checkbox } from "@mui/material";
 
 export default function Fashion() {
   const [file, setFile] = useState(null);
@@ -26,6 +27,45 @@ export default function Fashion() {
         console.log(res.data);
         setData(res.data);
       });
+  }
+
+  function handleYes(){
+    // Store the document for the user and redirect to user document page
+    const formData = new FormData();
+    formData.append("file", file);
+    formData.append("userId", "sampleEmail");  // Replace "sampleEmail" with the actual user ID
+
+    const response = axios.post("http://127.0.0.1:5000/storeDoc", formData, {
+      headers: {
+        "Access-Control-Allow-Origin": "*",
+      },
+    })
+      .then((res) => {
+        console.log(res.data);
+        setData(res.data);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+      // redirect to userPage to see all the docments
+  }
+
+  function handleNo(){
+    //  do not store the document , send alert to admin for manual review
+    const formData = new FormData();
+    formData.append("userId", "SampleEmail2");
+    const response = axios
+      .post("http://127.0.0.1:5000/manualReview", formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+          "Access-Control-Allow-Origin": "*",
+        },
+      })
+      .then((res) => {
+        console.log(res.data);
+        setData(res.data);
+      });
+
   }
 
   return mounted ? (
@@ -102,11 +142,23 @@ export default function Fashion() {
             Predicted Class : {data}
           </h1>
           <div className="grid grid-cols-3 gap-4 mt-10"></div>
+          <div>
+            Is Prediction Correct or Not?
+            <button onClick={()=>handleYes()}>
+              Yes
+            </button>
+            <button onClick={()=>handleNo()}>
+              No
+            </button>
+          </div>
         </div>
       ) : (
         <div></div>
       )}
     </div>
+    
+
+
   ) : (
     <div>Loading</div>
   );
