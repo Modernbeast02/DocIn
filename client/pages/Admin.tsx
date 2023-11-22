@@ -6,19 +6,19 @@ import axios from "axios";
 export default function Admin() {
     const [emails, setEmails] = useState([])
 
-    useEffect(() => {
-        const response = axios
-      .get("http://127.0.0.1:5000/fetchUserData",  {
-        headers: {
-          "Content-Type": "multipart/form-data",
-          "Access-Control-Allow-Origin": "*",
-        },
-      })
-      .then((res) => {
-        console.log(res.data);
-        setEmails(res.data);
-      });
-      }, []);
+    // useEffect(() => {
+    //     const response = axios
+    //   .get("http://127.0.0.1:5000/fetchUserData",  {
+    //     headers: {
+    //       "Content-Type": "multipart/form-data",
+    //       "Access-Control-Allow-Origin": "*",
+    //     },
+    //   })
+    //   .then((res) => {
+    //     console.log(res.data);
+    //     setEmails(res.data);
+    //   });
+    //   }, []);
 
 
     return (

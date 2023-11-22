@@ -13,7 +13,7 @@ const AdminSidebar = () => {
     return (
         <div className=" w-64 h-screen sticky top-0 border-r bg-white text-black">
             <div className=" border-b  py-5 flex ml-4 ">
-                <p className=" text-4xl font-bold">verifyMe</p>
+                <p className=" text-4xl font-bold">DocIn</p>
             </div>
             <div className="p-4 space-y-14">
                 <div className="space-y-4" >
