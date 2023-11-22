@@ -9,13 +9,23 @@ const login = () => {
     router.push(`/temp`);
   } else {
     return (
-      <div className="w-full justify-center flex items-center h-screen">
-        <button 
-          className="flex justify-center items-center text-6xl border-white border-2 p-5 rounded-lg hover:scale-[1.05] duration-300"
-          onClick={() => signIn()}
-        >
-          LOGIN TO DOCIN
-        </button>
+      <div className="bg-cover h-screen w-full flex justify-center items-center bg-gradient-to-r from-[#de6262] to-[#ffb88c]">
+        <div className="flex justify-center items-center w-[900px] h-[500px] bg-white">
+          <div className="flex flex-col w-full h-screen items-center justify-center">
+              <div className="px-20 py-4 flex flex-col justify-centerv items-center space-y-4">
+                  <h1 className="text-6xl font-semibold text-black uppercase">
+                    DOC IN
+                  </h1>
+                  <div className="text-black text-2xl font-medium">Unlock the door to seamless document management with DocIn!!</div>
+                
+               </div>
+                <div className="flex justify-center items-center mt-8">
+                  <button onClick={() => signIn()} className="text-white py-3 px-8 flex justify-center items-center rounded-md border-2 bg-gradient-to-r from-[#ff512f] to-[#dd2476] hover:from-pink-500 hover:to-yellow-500 font-bold">
+                    Login in With Google
+                  </button>
+                </div>
+          </div>
+        </div>
       </div>
     );
   }
